@@ -6,13 +6,13 @@ class Program
     {
         Console.WriteLine("Hello Prep5 World!");
 
-        DisplayWelcom();
+        DisplayWelcome();
         string name = PromptUserName();
         int number = PromptUserNumber();
         DisplayResult(name, number);
     }
 
-    static void DisplayWelcom()
+    static void DisplayWelcome()
     {
         Console.WriteLine("Welcome to the program!");        
     }
