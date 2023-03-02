@@ -1,0 +1,40 @@
+W02 Journal 
+3/1/2023
+Elijah Dodge and Team 06 
+
+Requirements: 
+    Create a menu that does the following: 
+        1 Write new entry 
+        2 Display journal entry(ies)
+        3 Save journal (and entries) to a file
+        4 Load journal from a file 
+        5 Quit
+
+Classes: 
+    Journal 
+        Display 
+        Save 
+        Load 
+
+        _date:<string>
+        _entries:List<entry>
+        _prompts:List<>
+
+        Display - date, prompt, entry (iterate)
+        Save to file 
+        Load from file
+
+        
+
+    Entry
+        Load random prompt 
+        Write entry 
+
+        _entry:<string>
+        _randomPrompt:<List> 
+
+
+Other 
+    Classes for major components
+    Contain 2 classes in addition to Program.cs 
+    Use member variables and methods//
