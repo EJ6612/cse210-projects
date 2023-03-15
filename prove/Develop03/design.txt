@@ -1,0 +1,53 @@
+
+Jesus wept 
+
+-----------------------------
+Class: Scripture 
+    Displays reference and Scripture
+Private Attributes: 
+    _reference<string>
+    _verseText<string>
+
+Public Constructor: 
+    Scripture(List<string>)
+    Scriputre(_reference, _verseText)
+
+Public Methods: 
+    HideWords()
+    GetRenderedText()
+    IsHidden()
+
+
+-----------------------------
+Class: Reference 
+    
+Private Attributes: 
+    _book<string>
+    _chapter<string>
+    _verseStart<string>
+    _verseEnd<string>
+
+Public Constructor: 
+    Reference()
+    Reference(book, chapter)
+    Reference(book, chapter, verseStart, verseEnd)
+
+Public Methods: 
+    Display()
+
+-----------------------------
+Class: Words
+    Hides random words
+
+Attributes: 
+    _word<string>
+Constructor: 
+    Words(word)
+
+Methods: 
+    ReplaceWords()
+
+
+
+    parse strings 
+
