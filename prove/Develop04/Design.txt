@@ -1,0 +1,59 @@
+W04 Design
+
+Program
+
+Class Activity 
+    Protected Attributes:
+        _description<string>
+        _activityName<string>
+        _duration<int>
+
+
+    Constructors: 
+        Activity(string activity)
+        Activity(string activity, int duration)
+
+    Methods:
+        string StartMessage(string activity)
+        string EndMessage(string activity)
+        void Spinner(int secondsToRun)
+        void Countdown(int secondsToRun)
+
+
+Class BreathingActivity : Activity
+    Private Attributes:
+        _breatheIn<int>
+        _breatheOut<int>
+
+    Constructors: 
+        BreathingActivity()
+
+    Methods:
+        void Breathe(int breatheIn, int breatheOut)
+
+
+Class ReflectionActivity : Activity
+    Private Attributes:
+        _prompts List<string>
+        _questions List<string>
+        ~OR~
+        _promptsAndQuestions Dictionary<> 
+
+    Constructors: 
+        ReflectionActivity()
+
+    Methods:
+        string DisplayPrompt()
+        string DisplayQuestion()
+
+
+Class ListingActivity : Activity
+    Private Attributes:
+        _listCount<int>
+        _prompts List<string>
+
+    Constructors: 
+        ListingActivity()
+
+    Methods:
+        string DisplayPrompt()
