@@ -28,8 +28,6 @@ class Reference
             //Console.Write(word);
         }
 
-
-
     }
 
     public void HideWord()
