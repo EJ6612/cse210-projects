@@ -1,4 +1,4 @@
-# cse210-ww-student-template
+# cse210-student-template
 Elijah Dodge 2023
 
 This repository contains the starter code for many different projects. They are arranged as follows:
