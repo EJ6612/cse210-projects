@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
 
-public class Resume 
+namespace Learning02
 {
-    public string _name;
-    public List<Job> _jobsList = new List<Job>();
-
-    public void Display()
+    public class Resume 
     {
-        Console.WriteLine($"Name: {_name}");
-        Console.WriteLine($"Jobs: ");
-        // Console.WriteLine(_jobsList);
-        foreach (Job job in _jobsList)
-        {
-            job.Display();
-        }
-    }
+        public string _name;
+        public List<Job> _jobsList = new List<Job>();
 
+        public void Display()
+        {
+            Console.WriteLine($"Name: {_name}");
+            Console.WriteLine($"Jobs: ");
+            // Console.WriteLine(_jobsList);
+            foreach (Job job in _jobsList)
+            {
+                job.Display();
+            }
+        }
+
+    }
 }
