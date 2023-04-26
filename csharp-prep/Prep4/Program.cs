@@ -1,69 +1,73 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-class Program
+namespace Prep4
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Prep4 World!");
-
-        bool alive = true;
-        
-        List<int> numbers = new List<int>();
-
-        while (alive)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Enter a number: (integers ONLY)");
-            int newNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Hello Prep4 World!");
 
-            //asking for numbers
-            if (newNumber != 0)
+            bool alive = true;
+            
+            List<int> numbers = new List<int>();
+
+            while (alive)
             {
-                numbers.Add(newNumber);
-            }
+                Console.WriteLine("Enter a number: (integers ONLY)");
+                int newNumber = int.Parse(Console.ReadLine());
 
-            //not asking for numbers
-            else 
-            {
-                //print total
-                Console.WriteLine($"Total: {numbers.Count}"); 
-
-                //print average
-                float howManyNumbers = numbers.Count;
-                float average = numbers.Sum() / howManyNumbers;
-                Console.WriteLine($"Average: {average}");
-
-                int bigBoi = 0;
-                int smallBoi = numbers.Sum() * 5;
-
-                //print BIGGEST NUMBER
-                foreach (int number in numbers)
+                //asking for numbers
+                if (newNumber != 0)
                 {
-                    if (number > bigBoi)
-                    { bigBoi = number; }
-                    if (number < smallBoi)
-                    { smallBoi = number; }
+                    numbers.Add(newNumber);
                 }
 
-                Console.WriteLine($"BIGGEST BOI IS: {bigBoi}.");
-                Console.WriteLine($"smallest boi is {smallBoi}.");
-
-                //sort the numbers
-                numbers.Sort(); 
-
-                Console.WriteLine("Sorted: ");
-
-                foreach (int number in numbers)
+                //not asking for numbers
+                else 
                 {
-                    Console.WriteLine(number);
+                    //print total
+                    Console.WriteLine($"Total: {numbers.Count}"); 
+
+                    //print average
+                    float howManyNumbers = numbers.Count;
+                    float average = numbers.Sum() / howManyNumbers;
+                    Console.WriteLine($"Average: {average}");
+
+                    int bigBoi = 0;
+                    int smallBoi = numbers.Sum() * 5;
+
+                    //print BIGGEST NUMBER
+                    foreach (int number in numbers)
+                    {
+                        if (number > bigBoi)
+                        { bigBoi = number; }
+                        if (number < smallBoi)
+                        { smallBoi = number; }
+                    }
+
+                    Console.WriteLine($"BIGGEST BOI IS: {bigBoi}.");
+                    Console.WriteLine($"smallest boi is {smallBoi}.");
+
+                    //sort the numbers
+                    numbers.Sort(); 
+
+                    Console.WriteLine("Sorted: ");
+
+                    foreach (int number in numbers)
+                    {
+                        Console.WriteLine(number);
+                    }
+
+                    alive = false;
+
                 }
 
-                alive = false;
 
             }
-
 
         }
-
     }
 }
