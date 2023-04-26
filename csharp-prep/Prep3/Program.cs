@@ -1,67 +1,70 @@
 using System; 
 
-class Program
+namespace Prep3
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Prep3 World!");
-
-        bool alive = true;
-        int timesPlayed = 0;
-
-        while (alive)
+        static void Main(string[] args)
         {
+            Console.WriteLine("Hello Prep3 World!");
 
-            Random randomGenerator = new Random();
-            int number = randomGenerator.Next(1, 101);
+            bool alive = true;
+            int timesPlayed = 0;
 
-            int tries = 0;
-
-            int guess = -1;
-
-            Console.WriteLine("Guess a number! ");
-
-            while (guess != number)
+            while (alive)
             {
-                guess = int.Parse(Console.ReadLine());
 
-                if (guess < number)
+                Random randomGenerator = new Random();
+                int number = randomGenerator.Next(1, 101);
+
+                int tries = 0;
+
+                int guess = -1;
+
+                Console.WriteLine("Guess a number! ");
+
+                while (guess != number)
                 {
-                    Console.WriteLine("Wrong! Guess higher...");
+                    guess = int.Parse(Console.ReadLine());
+
+                    if (guess < number)
+                    {
+                        Console.WriteLine("Wrong! Guess higher...");
+                    }
+
+                    else if (guess > number)
+                    {
+                        Console.WriteLine("Wrong! Guess lower...");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine($"Congratulations! That took {tries} attempt(s).");
+
+                    }
+
+                    tries += 1;
                 }
 
-                else if (guess > number)
+                Console.WriteLine("Do you want to play again? [YES/NO]");
+                string playAgain = Console.ReadLine();
+
+                timesPlayed += 1;
+                
+                if (playAgain.ToLower() == "yes")
                 {
-                    Console.WriteLine("Wrong! Guess lower...");
+                    alive = true;
                 }
 
                 else
                 {
-                    Console.WriteLine($"Congratulations! That took {tries} attempt(s).");
-
+                    alive = false;
                 }
 
-                tries += 1;
             }
 
-            Console.WriteLine("Do you want to play again? [YES/NO]");
-            string playAgain = Console.ReadLine();
-
-            timesPlayed += 1;
-            
-            if (playAgain.ToLower() == "yes")
-            {
-                alive = true;
-            }
-
-            else
-            {
-                alive = false;
-            }
+            Console.WriteLine($"Thanks for playing! You played {timesPlayed} time(s)! ");
 
         }
-
-        Console.WriteLine($"Thanks for playing! You played {timesPlayed} time(s)! ");
-
     }
 }
