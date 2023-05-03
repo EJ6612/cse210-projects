@@ -1,75 +1,82 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-class Journal
+namespace Develop02
 {
-    //public string _date;
-    public List<Entry> _entries = new List<Entry>();
-
-    string filename = "journal.csv";
-
-
-    public void DisplayEntries()
+    class Journal
     {
-        foreach(Entry entryRead in _entries)
-        {
-            entryRead.Display();
-        }
-    }
+        //public string _date;
+        public List<Entry> _entries = new List<Entry>();
 
-    public void Save()
-    {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        string filename = "journal.csv";
+
+
+        //Display Journal entries
+        public void DisplayEntries()
         {
             foreach(Entry entryRead in _entries)
             {
-                outputFile.WriteLine(entryRead.SaveEntry());            
+                entryRead.Display();
             }
         }
 
-    }
-
-    //Load Journal file. Isn't working properly.
-    public void Load()
-    {
-        Journal journal = new Journal();
-
-        string[] lines = (System.IO.File.ReadAllLines(filename));
-        
-        try
+        //Save Journal file.
+        public void Save()
         {
-            foreach (string line in lines)
+            using (StreamWriter outputFile = new StreamWriter(filename))
             {
-                string[] parts = line.Split("]]");  
-
-                    Entry entry = new Entry();
-                    //Console.WriteLine($"{parts[0]} {parts[1]} {parts[2]}");
-                    entry._dateText = parts[0];
-                    entry._prompt = parts[1];
-                    entry._entry = parts[2];
-                    journal._entries.Add(entry);
-                
-
-                //Console.WriteLine(line);
-
-
-               // foreach (string loadedEntry in parts)
-                //{
-                    //string[] entryParts = line.Split("]]");
-
-                    //Entry entry = new Entry();
-                    //Console.WriteLine($"{entryParts[0]} {entryParts[1]} {entryParts[2]}");
-                    //entry._dateText = entryParts[0];
-                    //entry._prompt = entryParts[1];
-                    //entry._entry = entryParts[2];
-                    //journal._entries.Add(entry);
-                //}         
+                foreach(Entry entryRead in _entries)
+                {
+                    outputFile.WriteLine(entryRead.SaveEntry());            
+                }
             }
+
         }
 
-        catch 
+        //Load Journal file. Isn't working properly.
+        public void Load()
         {
-            Console.WriteLine("Error happened.");
-        }
+            Journal journal = new Journal();
 
+            string[] lines = (System.IO.File.ReadAllLines(filename));
+            
+            try
+            {
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split("]]");  
+
+                        Entry entry = new Entry();
+                        //Console.WriteLine($"{parts[0]} {parts[1]} {parts[2]}");
+                        entry._dateText = parts[0];
+                        entry._prompt = parts[1];
+                        entry._entry = parts[2];
+                        journal._entries.Add(entry);
+                    
+
+                    //Console.WriteLine(line);
+
+
+                // foreach (string loadedEntry in parts)
+                    //{
+                        //string[] entryParts = line.Split("]]");
+
+                        //Entry entry = new Entry();
+                        //Console.WriteLine($"{entryParts[0]} {entryParts[1]} {entryParts[2]}");
+                        //entry._dateText = entryParts[0];
+                        //entry._prompt = entryParts[1];
+                        //entry._entry = entryParts[2];
+                        //journal._entries.Add(entry);
+                    //}         
+                }
+            }
+
+            catch 
+            {
+                Console.WriteLine("Error happened.");
+            }
+
+        }
     }
 }
