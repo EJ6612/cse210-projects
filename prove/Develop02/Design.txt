@@ -1,6 +1,6 @@
-W02 Journal 
-3/1/2023
-Elijah Dodge and Team 06 
+W03 Journal
+3/1/2023; 5/3/2023
+Elijah Dodge
 
 Requirements: 
     Create a menu that does the following: 
