@@ -1,6 +1,62 @@
 
 Jesus wept 
 
+Second time around: 
+
+Classes: 
+	Reference 
+		What does it do? 
+			Holds the scripture reference.
+
+		Methods: 
+			GetReference()
+			SetReference(string reference)
+
+		Attributes:
+			Dictionary scriptures
+			private string _reference
+
+
+	Scripture
+
+		public Scripture(string reference)
+			{ blah blah blah;}
+
+
+		Scripture newScripture = new Scripture(reference);
+		
+		What does it do? 
+			Holds the full scriptures (example: John 3:16, Proverbs 3:5-6)
+
+		Methods: 
+			Scripture(string reference)
+			GetScripture(string reference)
+			SetScripture(string scripture)
+
+		Attributes:
+			Dictionary scriptures
+			private string _scripture	
+
+	
+	Word
+		What does it do? 
+			Replaces individual words in a scripture.
+
+		Methods: 
+			Word(string scripture)
+			ReplaceWords()
+			DisplayNewString()
+
+		Attributes:
+			private string List<words>
+			public bool allClear
+
+
+
+
+
+
+
 -----------------------------
 Class: Scripture 
     Displays reference and Scripture
