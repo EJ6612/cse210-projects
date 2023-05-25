@@ -19,23 +19,27 @@ namespace Develop03
                 Console.WriteLine("Type 'quit' to exit.");
                 string keyEnter = Console.ReadLine();
 
+                //if user enters P, then hide a word
                 if (keyEnter.ToLower() == "p")
                 {
                     scripture.HideRandomWord();
                     Console.Clear();
                 }
 
+                //if user enters O, reveal last hidden word
                 else if (keyEnter.ToLower() == "o")
                 {
                     scripture.ShowLastHiddenWord();
                     Console.Clear();
                 }
 
+                //if user types and enters 'quit', break from the while loop
                 else if (keyEnter.ToLower() == "quit")
                 {
                     break;
                 }
-
+                
+                //if user enters any other input
                 else 
                 {
                     Console.Clear();
@@ -43,7 +47,7 @@ namespace Develop03
                     Console.WriteLine();
                 }
             }
-            
+
             Console.Clear();
             Console.WriteLine(loader.reference + " " + scripture.AsString());
             Console.WriteLine();

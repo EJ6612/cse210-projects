@@ -17,8 +17,10 @@ namespace Develop03
             .Select(line => line.Split('|'))
             .GroupBy(arr => arr[0])
             .ToDictionary(gr => gr.Key, gr => gr.Select(s => s[1]).ToArray());
+            //⤴️honestly, I'm not entirely sure how this even works. But it does!
         }
 
+        //Find a random key and return the accompanying scripture
         private string FindRandomKeyScripture()
         {
             if (newdict.Count == 0)
@@ -31,6 +33,7 @@ namespace Develop03
             int index = random.Next(newdict.Count);
             string key = newdict.ElementAt(index).Key;
 
+            //save key to reference, which will be used in Program for visual purposes
             reference = key;
 
             if (newdict.TryGetValue(key, out string[] value))
@@ -46,6 +49,7 @@ namespace Develop03
             }            
         }
 
+        //turn the scripture (which is a string) into a list so that it can be imported to the class Scripture
         public List<string> FindRandomScripture()
         {
             string[] words = FindRandomKeyScripture().Split(" ");
@@ -53,8 +57,8 @@ namespace Develop03
             return result;
         }
 
-        //for testing whether the dictionary successfully imported
-        public void TestDictionaryPrint(int choice)
+        //for testing whether the dictionary successfully imported (make public when testing)
+        private void TestDictionaryPrint(int choice)
         {
             //print all
             if (choice == 1)

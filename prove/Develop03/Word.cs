@@ -10,11 +10,13 @@ namespace Develop03
             _current = word;
         }
 
+        //return the current state of the word as a string
         public string AsString()
         {
             return _current;
         }
 
+        //turn the word into underscores 
         public void Hide()
         {
             //Count the letters in the word, then replace each letter
@@ -29,10 +31,11 @@ namespace Develop03
             {
                 newWord = newWord + "_";
             }
-
+            
             _current = newWord;            
         }
 
+        //revert the current state of the word to it's original state
         public void Show()
         {
             _current = _original;
