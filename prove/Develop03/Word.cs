@@ -7,6 +7,7 @@ namespace Develop03
         public Word(string word)
         {
             _original = word;
+            _current = word;
         }
 
         public string AsString()
@@ -23,20 +24,19 @@ namespace Develop03
             string newWord = "";
             int letterCount = _original.Length;
             
-            for (int i = 0; i <= letterCount; i++)
+            //i < letterCount (instead of <=) so that the space is not included in the replacement
+            for (int i = 0; i < letterCount; i++)
             {
                 newWord = newWord + "_";
             }
 
-            _current = newWord;
-            
+            _current = newWord;            
         }
 
         public void Show()
         {
             _current = _original;
         }
-
 
         /* First attempt code
         private string _word;

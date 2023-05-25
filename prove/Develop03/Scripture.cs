@@ -7,11 +7,11 @@ namespace Develop03
     class Scripture
     {    
         private List<Word> _words = new List<Word>();
+        private List<int> _replacedWordsIndex = new List<int>();
 
-        //LastHiddenWord index (tbd 😭)
-        private List<Word> _hiddenWordsIndex = new List<Word>();
+        public int totalWords, hiddenWords = 0;
 
-        Scripture(List<string> words)
+        public Scripture(List<string> words)
         {
             //create a new instance of Word
             //for each string from the scripture
@@ -20,6 +20,7 @@ namespace Develop03
             {
                 Word newWord = new Word(word);
                 _words.Add(newWord);
+                totalWords ++;
             }
         }
 
@@ -37,41 +38,28 @@ namespace Develop03
 
         public void HideRandomWord()
         {
-            //generate random number
             Random random = new Random();
-            int randomIndex = random.Next(0, _words.Count);
-
-            //check randomly selected word against words that
-            //have already been hidden. If already hidden, generate
-            //new number and start again.
-            foreach (Word word in _hiddenWordsIndex)
+            int index;
+            do 
             {
-                while (word == _words[randomIndex])
-                {                    
-                    if (word != _words[randomIndex])
-                    {
-                        _words[randomIndex].Hide();
-                        _hiddenWordsIndex.Add(_words[randomIndex]);
-                        break;
-                    }
+                index = random.Next(_words.Count);
+            } while (_replacedWordsIndex.Contains(index));
 
-                    else 
-                    {                        
-                        randomIndex = random.Next(0, _words.Count);
-                    }
-                }
-            }
+            _words[index].Hide();
+            _replacedWordsIndex.Add(index);
+            hiddenWords ++;
         }
+
 
         public void ShowLastHiddenWord()
         {
-            int hiddenWordPlacement = _hiddenWordsIndex.Count - 1;
-            
-            //_words.Find(_hiddenWordsIndex.Last());
-
-
-            
-            _hiddenWordsIndex.RemoveAt(hiddenWordPlacement);
+            if (_replacedWordsIndex.Count > 0)
+            {
+                int index = _replacedWordsIndex[_replacedWordsIndex.Count - 1];
+                _words[index].Show();
+                _replacedWordsIndex.Remove(index);
+                hiddenWords --;
+            }
         }
 
 
