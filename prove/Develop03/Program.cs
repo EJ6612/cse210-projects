@@ -6,12 +6,13 @@ namespace Develop03
     {
         static void Main(string[] args)
         {
-            Loader loader = new Loader();
+            Loader loader = new Loader("dictionary.csv");
             Scripture scripture = new Scripture(loader.FindRandomScripture());
+            Console.Clear();
 
             while (scripture.hiddenWords != scripture.totalWords)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine(loader.reference + " " + scripture.AsString());
                 Console.WriteLine();
                 Console.WriteLine("Press P to hide a word.");
@@ -38,7 +39,7 @@ namespace Develop03
                 {
                     break;
                 }
-                
+
                 //if user enters any other input
                 else 
                 {

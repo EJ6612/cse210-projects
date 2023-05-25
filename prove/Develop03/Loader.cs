@@ -10,14 +10,14 @@ namespace Develop03
         Dictionary<string, string[]> newdict = new Dictionary<string, string[]>();
         public string reference;
 
-        public Loader()
+        public Loader(string importDictionary)
         {
             //load the file into the dictionary
-            newdict = File.ReadLines("dictionary.csv")
+            newdict = File.ReadLines(importDictionary)
             .Select(line => line.Split('|'))
             .GroupBy(arr => arr[0])
             .ToDictionary(gr => gr.Key, gr => gr.Select(s => s[1]).ToArray());
-            //⤴️honestly, I'm not entirely sure how this even works. But it does!
+            //⤴️honestly, I'm not entirely sure how this even works. But it somehow does work!
         }
 
         //Find a random key and return the accompanying scripture
