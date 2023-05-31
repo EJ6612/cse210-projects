@@ -12,7 +12,7 @@ namespace Develop03
 
             while (scripture.hiddenWords != scripture.totalWords)
             {
-                //Console.Clear();
+                //Display Menu
                 Console.WriteLine(loader.reference + " " + scripture.AsString());
                 Console.WriteLine();
                 Console.WriteLine("Press P to hide a word.");
