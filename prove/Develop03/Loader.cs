@@ -16,8 +16,12 @@ namespace Develop03
             newdict = File.ReadLines(importDictionary)
             .Select(line => line.Split('|'))
             .GroupBy(arr => arr[0])
-            .ToDictionary(gr => gr.Key, gr => gr.Select(s => s[1]).ToArray());
-            //⤴️honestly, I'm not entirely sure how this even works. But it somehow does work!
+            .ToDictionary(group => group.Key, group => group.Select(splitLine => splitLine[1]).ToArray());
+            //'splitLine' represents each individual line that has been split into an array of strings 
+            //using the "|" character as the delimiter.
+            //
+            //'group' represents each group of 'splitLine' arrays that have been grouped together based 
+            //on the value at index 0 (the first element) of each array. Each group has a unique key.
         }
 
         //Find a random key and return the accompanying scripture
