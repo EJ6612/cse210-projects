@@ -36,7 +36,7 @@ namespace Develop03
             return currentScripture;
         }
 
-        //hide a word at random
+        //blerp
         public void HideRandomWord()
         {
             //choose a word at random that hasn't already been hidden
@@ -56,7 +56,7 @@ namespace Develop03
         }
 
 
-        //show the last hidden word
+        //blerps
         public void ShowLastHiddenWord()
         {
             if (_replacedWordsIndex.Count > 0)
