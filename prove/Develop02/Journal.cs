@@ -1,15 +1,41 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Develop02
 {
+    ///<summary>
+    ///The responsibility of Journal is to store entries.
+    ///</summary>
     class Journal
     {
+        // First Attempt Code
+
         //public string _date;
         public List<Entry> _entries = new List<Entry>();
 
         string filename = "journal.csv";
+
+        public Journal() 
+        {
+            string[] lines = System.IO.File.ReadAllLines(filename);
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split("]]");
+                string date = parts[0];
+                string prompt = parts[1];
+                string entry = parts[2];
+
+                Entry newEntry = new Entry();
+                newEntry._dateText = date;
+                newEntry._prompt = prompt;
+                newEntry._entry = entry;
+                _entries.Add(newEntry);
+            }
+
+        }
 
 
         //Display Journal entries
@@ -34,49 +60,37 @@ namespace Develop02
 
         }
 
-        //Load Journal file. Isn't working properly.
-        public void Load()
+        //Load Journal file.
+        public void LoadFromOtherJournal(string journalFile)
         {
-            Journal journal = new Journal();
+            string[] lines = System.IO.File.ReadAllLines(filename);
 
-            string[] lines = (System.IO.File.ReadAllLines(filename));
-            
-            try
+            if (lines != null)
             {
+                _entries.Clear();
+
                 foreach (string line in lines)
                 {
-                    string[] parts = line.Split("]]");  
+                    string[] parts = line.Split("]]");
+                    string date = parts[0];
+                    string prompt = parts[1];
+                    string entry = parts[2];
 
-                        Entry entry = new Entry();
-                        //Console.WriteLine($"{parts[0]} {parts[1]} {parts[2]}");
-                        entry._dateText = parts[0];
-                        entry._prompt = parts[1];
-                        entry._entry = parts[2];
-                        journal._entries.Add(entry);
-                    
-
-                    //Console.WriteLine(line);
-
-
-                // foreach (string loadedEntry in parts)
-                    //{
-                        //string[] entryParts = line.Split("]]");
-
-                        //Entry entry = new Entry();
-                        //Console.WriteLine($"{entryParts[0]} {entryParts[1]} {entryParts[2]}");
-                        //entry._dateText = entryParts[0];
-                        //entry._prompt = entryParts[1];
-                        //entry._entry = entryParts[2];
-                        //journal._entries.Add(entry);
-                    //}         
+                    Entry newEntry = new Entry();
+                    newEntry._dateText = date;
+                    newEntry._prompt = prompt;
+                    newEntry._entry = entry;
+                    _entries.Add(newEntry);
                 }
+
+                Console.WriteLine("SUCCESSFULLY LOADED JOURNAL ENTRIES");
             }
 
-            catch 
+            else 
             {
-                Console.WriteLine("Error happened.");
+                Console.WriteLine("INVALID FILETYPE");
             }
-
         }
+        
     }
 }

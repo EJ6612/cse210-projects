@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace Develop02
 {
+    ///<summary>
+    ///The responsibility of an Entry is to record (or store) a prompt,
+    ///response, and date.
+    ///</summary>
     class Entry
     {
+        //First Attempt Code
         public string _entry, _prompt, _dateText;
 
         public List<string> _randomPrompt = new List<string>
@@ -28,7 +33,7 @@ namespace Develop02
         public string SaveEntry()
         {        
             return $"{_dateText}]]{_prompt}]]{_entry}";
-        }
+        }        
 
 
     }

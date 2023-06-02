@@ -10,6 +10,48 @@ Requirements:
         4 Load journal from a file 
         5 Quit
 
+
+Second time around: 
+Classes: 
+    Journal 
+        What does it do? 
+            To store entries.
+        
+        Methods: 
+            StoreEntry(Entry) : void
+            GetAllEntries() : List<Entry>
+
+        Attributes: 
+            List : Entry
+        
+
+    Entry
+        What does it do?
+            To record/hold the question, response, and date.
+
+        Methods:
+            Store(question, response, date)
+            Fetch() : string
+
+        Attributes:
+            question
+            response
+            date 
+
+    Prompts 
+        What does it do? 
+            To produce a predefined question (or prompt).
+        
+        Methods: 
+            GetRandomPrompt() : string 
+
+        Attributes: 
+            
+
+
+
+
+First time around: 
 Classes: 
     Journal 
         Display 
