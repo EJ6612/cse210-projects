@@ -8,7 +8,6 @@ namespace Develop04
         {
             string userSelection = "0";
             bool alive = true;
-            int userInputSeconds = 0;
 
             while(alive)
             {
@@ -26,31 +25,20 @@ namespace Develop04
                     //Breathing Activity
                     case "1":
                         Console.Clear();
-                        Console.WriteLine("How many seconds?");
-                        userInputSeconds = Int16.Parse(Console.ReadLine());
 
-                        Breathing breathing = new Breathing(userInputSeconds);
-
-                        Console.WriteLine("");
-                        Console.WriteLine("Press ENTER to go back to the menu.");
-                        Console.ReadLine();
-                        userInputSeconds = 0;
+                        Breathing breathing = new Breathing();
                         break;
 
                     case "2":
+                        Console.Clear();
 
-                        Console.WriteLine("");
-                        Console.WriteLine("Press ENTER to go back to the menu.");
-                        Console.ReadLine();
-                        userInputSeconds = 0;
+                        Reflection reflection = new Reflection();                        
                     break;
 
                     case "3":
+                        Console.Clear();
 
-                        Console.WriteLine("");
-                        Console.WriteLine("Press ENTER to go back to the menu.");
-                        Console.ReadLine();
-                        userInputSeconds = 0;
+                        Listing listing = new Listing();
                     break;
 
                     //Quit
