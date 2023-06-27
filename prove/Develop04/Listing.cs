@@ -6,7 +6,6 @@ namespace Develop04
 {
     public class Listing : Activities 
     {
-        //private List<string> prompts = new List<string>();
         private List<string> prompts = new List<string>{
             "Who are people that you appreciate?",
             "What are personal strengths of yours?",
