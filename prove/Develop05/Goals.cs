@@ -12,12 +12,12 @@ namespace Develop05
         public int Points { get; protected set; }
         public bool Completed { get; set; }
 
-        public Goal(string name, string description)
+        public Goal(string name, string description, int points, bool isCompleted)
         {
             Name = name;
             Description = description;
-            Points = 0;
-            Completed = false;
+            Points = points;
+            Completed = isCompleted;
         }
 
         public abstract void Complete();
@@ -25,6 +25,12 @@ namespace Develop05
         public string SaveGoal()
         {        
             return $"]]{Name}]]{Description}]]{Points}]]{Completed}";
-        }     
+        }
+
+
+        public override string ToString()
+        {
+            return $"Name: {Name}\nDescription: {Description}\nPoints: {Points}\nIs Completed: {Completed}\n";
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace Develop05
 {
     public class Simple : Goal
     {
-        public Simple(string name, string description) : base(name, description)
+        public Simple(string name, string description, int points, bool isCompleted) : base(name, description, points, isCompleted)
         {
             Points = 50;            
         }

@@ -1,3 +1,4 @@
-Develop05.Simple]]BEANS BEANS]]NO NO NON NO]]50]]False
-Develop05.Eternal]]NO NO NO]]GOALS? NO WAY!]]0]]False
-Develop05.Checklist]]EAT BEANS]]EAT ALL THE BENS]]0]]False
+210
+Simple]]This is a SIMPLE GOAL]]Description of a simple goal right here]]50]]False
+Eternal]]This is an ETERNAL GOAL]]A description of an ETERNAL GOAL broski]]0]]False
+Checklist]]This is a CHECKLIST GOAL]]A description of a CheckLIST GOAL bruh]]0]]False]]0]]5

@@ -40,7 +40,7 @@ namespace Develop05
                         Console.Clear();
                         foreach (Goal goal in _goals)
                         {
-                            Console.WriteLine(goal);
+                            Console.WriteLine(goal.ToString());
                         }                 
                         Console.ReadLine();                       
                         break;
@@ -49,12 +49,18 @@ namespace Develop05
                     case "3":
                         Console.Clear();
                         Transfer.SaveToFile("saveFile.txt", _goals);
-                        
+
+                        Console.WriteLine("Files have been saved to a file!");
+                        Console.ReadLine();
                         break;
 
                     //Load
                     case "4":
-                        Transfer.LoadFromFile("saveFile.txt");
+                        Console.Clear();
+                        Console.WriteLine("What file would you like to load?");
+                        string newFile = Console.ReadLine();
+
+                        _goals = Transfer.ReadGoalsFromFile(newFile);
                         break;
 
                     //Record
@@ -100,19 +106,19 @@ namespace Develop05
             {
                 //simple
                 case "1":
-                    goal = new Simple(name, description);
+                    goal = new Simple(name, description, 0, false);
                 break;
 
                 //simple
                 case "2":
-                    goal = new Eternal(name, description);
+                    goal = new Eternal(name, description, 0, false);
                 break;
 
                 //simple
                 case "3":
                     Console.WriteLine("How many times do you want to achieve this? ");
                     int itemCount = int.Parse(Console.ReadLine());
-                    goal = new Checklist(name, description, itemCount);
+                    goal = new Checklist(name, description, 0, false, 0, itemCount);
                 break;
 
                 default:

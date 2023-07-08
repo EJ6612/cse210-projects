@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Develop05
 {
@@ -12,58 +11,71 @@ namespace Develop05
         {
             using (StreamWriter outputFile = new StreamWriter(saveFile))
             {
-                foreach(Goal goal in goals)
+                outputFile.WriteLine(Program.PointTotal);
+
+                foreach (Goal goal in goals) 
                 {
-                    string goalConverted = goal.ToString();
-                    outputFile.WriteLine(goalConverted + goal.SaveGoal());            
+                    string line;
+                    if (goal is Checklist checklistGoal)
+                    {
+                        line = $"{goal.GetType().Name}]]{goal.Name}]]{goal.Description}]]{goal.Points}]]{goal.Completed}]]{checklistGoal.GoalCompleted}]]{checklistGoal.GoalTotal}";
+                    }
+                    else
+                    {
+                        line = $"{goal.GetType().Name}]]{goal.Name}]]{goal.Description}]]{goal.Points}]]{goal.Completed}";
+                    }
+
+                    outputFile.WriteLine(line);
                 }
             }
         }
 
-        public static void LoadFromFile(string saveFile)
+
+        public static List<Goal> ReadGoalsFromFile(string saveFile)
         {
-            string[] lines = File.ReadAllLines(saveFile);
+            List<Goal> goals = new List<Goal>();
 
-            if (lines != null)
+            using (StreamReader reader = new StreamReader(saveFile))
             {
-                Program._goals.Clear();
+                Program.PointTotal = int.Parse(reader.ReadLine());
 
-                foreach(string line in lines)
+                string line;
+
+                while((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split("]]");
-                    string goalType = parts[0];
-                    string name = parts[1];
-                    string description = parts[2];
-                    int points = int.Parse(parts[3]);
-                    bool completed = bool.Parse(parts[4]);
+                    string[] values = line.Split(new string[] { "]]" }, StringSplitOptions.None);
 
-                    if (goalType == "Develop05.Simple")
+                    string goalType = values[0];
+                    string name = values[1];
+                    string description = values[2];
+                    int points = int.Parse(values[3]);
+                    bool isCompleted = bool.Parse(values[4]);
+
+                    Goal goal;
+                    switch (goalType)
                     {
-                        Goal newGoal = new Simple(name, description);
-                        //newGoal.Points = points;
-                        newGoal.Completed = completed;
-                        Program._goals.Add(newGoal);
+                        case "Simple":
+                            goal = new Simple(name, description, points, isCompleted);
+                            break;
+                        case "Eternal":
+                            goal = new Eternal(name, description, points, isCompleted);
+                            break;
+                        case "Checklist":
+                            int subGoalsCompleted = int.Parse(values[5]);
+                            int subGoalsTotal = int.Parse(values[6]);
+                            goal = new Checklist(name, description, points, isCompleted, subGoalsCompleted, subGoalsTotal);
+                            break;
+                        default:
+                            throw new ArgumentException("Unknown goal type: " + goalType);
                     }
 
-                    if (goalType == "Develop05.Eternal")
-                    {
-                        Goal newGoal = new Eternal(name, description);
-                        //newGoal.Points = points;
-                        newGoal.Completed = completed;
-                        Program._goals.Add(newGoal);
-                    }
-
-                    if (goalType == "Develop05.Checklist")
-                    {
-                        Goal newGoal = new Checklist(name, description, 100);
-                        //newGoal.Points = points;
-                        newGoal.Completed = completed;
-                        Program._goals.Add(newGoal);
-                    }
+                    goals.Add(goal);
                 }
-            }
+            }            
+            Console.WriteLine("\nYour file has been loaded.\n\nPress ENTER to continue.");
+            Console.ReadLine();
 
-
-        }        
+            return goals;
+        }
     }
 }
