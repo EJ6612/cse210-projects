@@ -1,4 +1,4 @@
-210
-Simple]]This is a SIMPLE GOAL]]Description of a simple goal right here]]50]]False
-Eternal]]This is an ETERNAL GOAL]]A description of an ETERNAL GOAL broski]]0]]False
-Checklist]]This is a CHECKLIST GOAL]]A description of a CheckLIST GOAL bruh]]0]]False]]0]]5
+255
+Simple]]Drink water]]Drink some water broski]]50]]True
+Eternal]]Read the Journal of Discourses]]Dive into that doctrine]]200]]False
+Checklist]]Complete jumping jacks]]Do them]]5]]False]]1]]5

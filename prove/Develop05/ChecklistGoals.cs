@@ -14,7 +14,18 @@ namespace Develop05
         
         public override void Complete()
         {
+            GoalCompleted++;
 
+            if (GoalCompleted == GoalTotal)
+            {
+                Points = (GoalCompleted * 10) + (GoalTotal * 10);
+                Completed = true;
+            }
+
+            else 
+            {
+                Points = GoalCompleted * 5;
+            }
         }
 
         public override string ToString()

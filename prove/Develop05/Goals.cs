@@ -30,7 +30,7 @@ namespace Develop05
 
         public override string ToString()
         {
-            return $"Name: {Name}\nDescription: {Description}\nPoints: {Points}\nIs Completed: {Completed}\n";
+            return $"Name: {Name}\nDescription: {Description}\nPoints: {Points}\n";
         }
     }
 }

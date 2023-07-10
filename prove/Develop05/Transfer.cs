@@ -34,48 +34,62 @@ namespace Develop05
         public static List<Goal> ReadGoalsFromFile(string saveFile)
         {
             List<Goal> goals = new List<Goal>();
-
-            using (StreamReader reader = new StreamReader(saveFile))
+            
+            try
             {
-                Program.PointTotal = int.Parse(reader.ReadLine());
-
-                string line;
-
-                while((line = reader.ReadLine()) != null)
+                using (StreamReader reader = new StreamReader(saveFile))
                 {
-                    string[] values = line.Split(new string[] { "]]" }, StringSplitOptions.None);
+                    Program.PointTotal = int.Parse(reader.ReadLine());
 
-                    string goalType = values[0];
-                    string name = values[1];
-                    string description = values[2];
-                    int points = int.Parse(values[3]);
-                    bool isCompleted = bool.Parse(values[4]);
+                    string line;
 
-                    Goal goal;
-                    switch (goalType)
+                    while((line = reader.ReadLine()) != null)
                     {
-                        case "Simple":
-                            goal = new Simple(name, description, points, isCompleted);
-                            break;
-                        case "Eternal":
-                            goal = new Eternal(name, description, points, isCompleted);
-                            break;
-                        case "Checklist":
-                            int subGoalsCompleted = int.Parse(values[5]);
-                            int subGoalsTotal = int.Parse(values[6]);
-                            goal = new Checklist(name, description, points, isCompleted, subGoalsCompleted, subGoalsTotal);
-                            break;
-                        default:
-                            throw new ArgumentException("Unknown goal type: " + goalType);
+                        string[] values = line.Split(new string[] { "]]" }, StringSplitOptions.None);
+
+                        string goalType = values[0];
+                        string name = values[1];
+                        string description = values[2];
+                        int points = int.Parse(values[3]);
+                        bool isCompleted = bool.Parse(values[4]);
+
+                        Goal goal;
+                        switch (goalType)
+                        {
+                            case "Simple":
+                                goal = new Simple(name, description, points, isCompleted);
+                                break;
+                            case "Eternal":
+                                goal = new Eternal(name, description, points, isCompleted);
+                                break;
+                            case "Checklist":
+                                int subGoalsCompleted = int.Parse(values[5]);
+                                int subGoalsTotal = int.Parse(values[6]);
+                                goal = new Checklist(name, description, points, isCompleted, subGoalsCompleted, subGoalsTotal);
+                                break;
+                            default:
+                                throw new ArgumentException("Unknown goal type: " + goalType);
+                        }
+
+                        goals.Add(goal);
                     }
+                }            
+                Console.WriteLine("\nYour file has been loaded.\n\nPress ENTER to continue.");
+                Console.ReadLine();
 
-                    goals.Add(goal);
-                }
+                return goals;
+            }
+
+            catch
+            {
+                Console.WriteLine("\nInvalid file type.");
+
+                Console.WriteLine("\nPress ENTER to continue.");
+                Console.ReadLine();
+
+                return null;
             }            
-            Console.WriteLine("\nYour file has been loaded.\n\nPress ENTER to continue.");
-            Console.ReadLine();
-
-            return goals;
+            
         }
     }
 }
