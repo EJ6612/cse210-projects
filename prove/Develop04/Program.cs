@@ -33,13 +33,13 @@ namespace Develop04
                         Console.Clear();
 
                         Reflection reflection = new Reflection();                        
-                    break;
+                        break;
 
                     case "3":
                         Console.Clear();
 
                         Listing listing = new Listing();
-                    break;
+                        break;
 
                     //Quit
                     case "4":
