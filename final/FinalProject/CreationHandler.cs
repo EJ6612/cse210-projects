@@ -4,9 +4,9 @@ namespace LifePlanner
     {
 
         //Goals
-        public void CreateNewGoal(Goal goal)
+        public void CreateNewGoal()
         {
-
+            
         }
 
         public void ModifyGoal(Goal goal)

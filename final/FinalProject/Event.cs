@@ -2,12 +2,13 @@ namespace LifePlanner
 {
     public class Event
     {
+        /*
         public string Name;
         public string Description;
         public DateOnly CreationDate;
         public DateOnly ModificationDate;
-        public DateTime StartTime;
-        public DateTime EndTime;
+        public string StartTime;
+        public string EndTime;
         public List<Person> People = new List<Person>();
         public Goal LinkedGoal;
         
@@ -19,5 +20,6 @@ namespace LifePlanner
             +$"When: {StartTime} - {EndTime}"
             + $"\n-------\nLinked Goal: \n{LinkedGoal.ToString()}";
         }
+        */
     }
 }

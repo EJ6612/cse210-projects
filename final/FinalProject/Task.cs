@@ -2,6 +2,7 @@ namespace LifePlanner
 {
     public class Task
     {
+        /*
         public string Name;
         public string Description;
         public DateTime DueDate;
@@ -13,5 +14,6 @@ namespace LifePlanner
             return $"Name: {Name}\nDescription: {Description}\nDue Date: {DueDate}\n"
             + $"Linked Goal: \n{LinkedGoal.ToString()}";
         }
+        */
     }
 }
