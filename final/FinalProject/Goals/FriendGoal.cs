@@ -1,20 +1,34 @@
-using System;
+﻿using System;
 
 namespace LifePlanner
 {
-    public class SecondaryGoal : Goal
+    internal class FriendGoal : Goal
     {
-        public SecondaryGoal(string goalName, string description, string dueDate)  : base(goalName, description, dueDate)
+        private Person friend;
+        public Person Friend 
         {
-            GoalType = "SECONDARY GOAL";
+            get { return friend; }
+            set { friend = value; }
+        }
+        public FriendGoal(string goalName, string description, string dueDate, Person friend) : base(goalName, description, dueDate)
+        {
+            GoalType = "FRIEND GOAL";
             Name = goalName;
             Description = description;
             DueDate = dueDate;
+            Friend = friend;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"{Friend.FirstName}[/]{Friend.LastName}[/]{Friend.PhoneNumber}[/]{Friend.Email}";
         }
 
         public override void PresentGoal()
         {
             Console.WriteLine($"Name: {Name}\nDescription: {Description}\nDue Date: {DueDate}\n");
+
+            Console.WriteLine($"This goal is centeted on {Friend.FirstName}.");
 
             Console.WriteLine("Tasks: ");
 
@@ -30,11 +44,6 @@ namespace LifePlanner
                     Console.WriteLine(task.PresentTask());
                 }                
             }
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + "";
         }
 
     }

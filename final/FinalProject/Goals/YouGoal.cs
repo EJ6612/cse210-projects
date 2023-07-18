@@ -4,21 +4,48 @@ namespace LifePlanner
 {
     internal class YouGoal : Goal
     {
-        public YouGoal(string goalName, string description, string dueDate) : base(goalName, description, dueDate)
+        private Person user;
+        public Person User 
         {
+            get { return user; }
+            set { user = value; }
+        }
+
+        public YouGoal(string goalName, string description, string dueDate, Person theUser)  : base(goalName, description, dueDate)
+        {
+            GoalType = "'ME' GOAL";
             Name = goalName;
             Description = description;
             DueDate = dueDate;
+            User = theUser;
         }
-        public override void SetNewGoal()
-        {
-            Console.WriteLine("Congrats! You have set a new You Goal.");
-            Console.ReadLine();
-        }
+            
 
         public override string ToString()
         {
-            return $"Name: {Name} \nDesription: {Description}";
+            return base.ToString() + $"{User.FirstName}[/]{User.LastName}";
+        }
+
+        public override void PresentGoal()
+        {
+            Console.WriteLine($"Name: {Name}\nDescription: {Description}\nDue Date: {DueDate}\n");
+
+            Console.WriteLine($"This goal is centered on you, {User.FirstName}.");
+
+           Console.WriteLine("Tasks: ");
+
+            if (Tasks.Count == 0)
+            {
+                Console.WriteLine($"[No tasks assigned to goal '{Name}'.]");
+            }
+
+            else
+            {
+                foreach (Task task in Tasks)
+                {
+                    Console.WriteLine(task.PresentTask());
+                }                
+            }
         }
 
     }

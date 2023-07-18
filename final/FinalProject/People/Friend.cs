@@ -4,6 +4,16 @@ namespace LifePlanner
 {
     public class Friend : Person
     {
+        public Friend() {}
+
+        public Friend(string first, string last, string phone, string email)
+        {
+            FirstName = first;
+            LastName = last;
+            PhoneNumber = phone;
+            Email = email;
+        }
+        
         public override void CreatePerson()
         {
             Console.WriteLine("What is their first name? ");

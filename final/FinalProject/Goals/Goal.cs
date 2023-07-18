@@ -21,23 +21,47 @@ namespace LifePlanner
             get { return dueDate; }   
             set { dueDate = value; }  
         }
-        private List<Task> Tasks = new List<Task>();
+
+        public string GoalType;
+        
+        public List<Task> Tasks = new List<Task>();
         private List<Person> People = new List<Person>();
 
         public Goal(string goalName, string description, string dueDate)
         {
-            Name = goalName;
-            Description = description; 
-            DueDate = dueDate;
+
         }
 
+        public void AddTasks()
+        {
+            bool alive = true;
+            while (alive)
+            {
+                Console.WriteLine("Would you like to add a task to this goal?");
+                Console.WriteLine("1. Yes");
+                Console.WriteLine("2. No");
+                string userSelection = Console.ReadLine();
 
-        public abstract void SetNewGoal();
+                if (userSelection == "1")
+                {
+                    Task newTask = new Task();
+                    Tasks.Add(newTask);
+                }
+
+                else
+                {
+                    Console.WriteLine("No new tasks will be added.");
+
+                    alive = false;
+                }
+            }
+        }
+
+        public abstract void PresentGoal();
 
         public override string ToString()
         {
-            return $"Name: {Name}\nDescription: {Description}\nDue Date: {DueDate}\n"
-            + "";
+            return $"{GoalType}[/]{Name}[/]{Description}[/]{DueDate}[/]";
         }
         
     }

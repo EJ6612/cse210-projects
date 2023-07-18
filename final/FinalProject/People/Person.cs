@@ -22,7 +22,6 @@ namespace LifePlanner
             set { _email = value; }
         }
 
-
         public string PhoneNumber
         {
             get { return _phoneNumber; }

@@ -4,17 +4,37 @@ namespace LifePlanner
 {
     public class PrimaryGoal : Goal
     {
-
-        public PrimaryGoal(string goalName, string description, string dueDate) : base(goalName, description, dueDate)
+        public PrimaryGoal(string goalName, string description, string dueDate)  : base(goalName, description, dueDate)
         {
+            GoalType = "PRIMARY GOAL";
             Name = goalName;
-            Description = description;
+            Description = description; 
             DueDate = dueDate;
         }
-        public override void SetNewGoal()
+
+        public override void PresentGoal()
         {
-            Console.WriteLine("Congrats! You have set a new Primary Goal.");
-            Console.ReadLine();
+            Console.WriteLine($"Name: {Name}\nDescription: {Description}\nDue Date: {DueDate}\n");
+
+            Console.WriteLine("Tasks: ");
+
+            if (Tasks.Count == 0)
+            {
+                Console.WriteLine($"[No tasks assigned to goal '{Name}'.]");
+            }
+
+            else
+            {
+                foreach (Task task in Tasks)
+                {
+                    Console.WriteLine(task.PresentTask());
+                }                
+            }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + "";
         }
     }
 }

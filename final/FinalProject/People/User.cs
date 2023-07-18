@@ -12,6 +12,16 @@ namespace LifePlanner
             set { _birthday = value; } 
         }
 
+        public User() {}
+        public User(string first, string last, string birthday, string email, string phone)
+        {
+            FirstName = first;
+            LastName = last;
+            Birthday = birthday;
+            Email = email;
+            PhoneNumber = phone;
+        }
+
         public override void CreatePerson()
         {
             Console.WriteLine("What is your first name? ");
