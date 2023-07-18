@@ -20,7 +20,6 @@ namespace Develop05
         {
             return base.ToString() + $"Is Completed: {Completed}\n";
         }
-
         
     }
 }

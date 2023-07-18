@@ -148,7 +148,7 @@ namespace Develop05
             Console.Clear();
             Console.WriteLine("Complete a goal!\n");
 
-            if(_goals.Count == 0)
+            if (_goals.Count == 0)
             {
                 Console.WriteLine("There are no goals. Hence, none can be marked as complete.");
                 Console.WriteLine("\nPress ENTER to go back.");
